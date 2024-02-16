@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'homestylesheet.css' %}">
+{% endblock %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="{% static 'js/weather.js' %}" defer type="module"></script>
+<script src="{% static 'js/maps.js' %}" defer type="module"></script>
+<script src="{% static 'js/placeTypes.js' %}" defer type="module"></script>
+<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&callback=initMap&libraries=places"></script>
+{% comment %} <script src="./scripts/maps.js" defer type="module"></script>
+<script type="module" src="./js/scripts.js"></script> {% endcomment %}
+{% endblock %}
+{% block title %} <title>WanderWhiz Home </title>  {% endblock%}
+{% block content %}
+
+
+<div class="container-heading">
+	<h2>Travel Beyond Boundaries!</h2>
+	<div class="heading-images">
+		<img src="{% static 'images/imgbin_airplane-airline-ticket-travel-icon-png.png' %}" alt="location image with plane"
+			width="100" height="75">
+		<img src="{% static 'images/ce9aek1muee0d0lhd8elh1c8jq.png' %}" alt="location image" width="75" height="75">
+	</div>
+</div>
+<div class="container">
+	<div class="container-map">
+		<div class="search-container">
+			<input class="form-control" id="search" type="text" placeholder="Search..." />
+			<button id="clear-button">Clear</button>
+			<div class="filterContainer">
+				<button id="select-button">Filter</button>
+				<div id="dropdown" class="dropdown-buttons">
+					<button id="hotels">Hotels</button>
+					<button id="tourist_attractions">Tourist Attractions</button>
+					<button id="restaurants">Restaurants</button>
+				</div>
+			</div>
+		</div>
+		<div class="filterTextbox">
+			<table id="resultsTable">
+			  <tbody id="results"></tbody>
+			</table>
+		  </div>
+		  <div id="map"></div>
+
+		  
+		 
+		<div id="temp"></div>
+	</div>
+	
+	<div class="textbox">
+		<h2>My Travel List</h2>
+		<div id="list">
+			<!-- Travel list items will be added here -->
+		{% block itineraryinfo %}
+		{% endblock %}
+		<button id="save-button"> Save Itinerary </button> <!-- Add function call when button is pressed -->
+		</div>
+	</div>
+	
+</div>
+<div id="weather" style='grid-row: 3/4; grid-column: 1/3; padding: 10px; display: flex;'>
+	<div id="currencydisplay">
+		<h3>Currency Conversion</h3>
+		<label for="source_country">Source Country:</label>
+		<input type="text" id="source_country" name="source_country" required><br><br>
+		<label for="target_country">Target Country:</label>
+		<input type="text" id="target_country" name="target_country" required><br><br>
+		<label for="amount">Amount:</label>
+		<input type="number" id="amount" name="amount" required><br><br>
+		<input type="submit" value="Convert" id = 'converterbutton' style='    background-color: #e8ba5c;
+			color: #fff;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 10px;
+			cursor: pointer;
+			margin-left: 8px;
+			font-size: larger;'>
+	  </div>
+  <div id="weatherdiv"></div>
+
+</div>
+
+{% endblock content %}

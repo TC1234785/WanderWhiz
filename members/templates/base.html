@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block title %} <title>Login </title> {% endblock  %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'loginstylesheet.css' %}">
+    {% endblock %}
+    {% block extrahead %}  {% comment   %} This extrahead is some extra head space to add scripts specific to certain pages {% endcomment %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+
+<body>
+    <header style= 'padding-left: 2%; padding-right: 2%;'>
+        <div class="header-logo">
+            <a href="/home">
+            <img src="{% static 'images/WanderWhiz-1_5.png'  %}" alt="Logo" width="160" height="60">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'home'%}">Home</a></li>
+                    <li><a href="{% url 'logout'%}">Logout</a></li>
+                    <li><a href="{% url 'itinerary_list'%}">View Itineraries</a></li>
+                    <li><a href="#">Hi {{request.user | title}}!</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+    <footer id="feet">
+        <div class="container-footer">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-logo">
+                <img src="{% static 'images/WanderWhiz-1_5.png'  %}" alt="Logo" width="160" height="60">
+            </div>
+        </div>
+    </footer>
+</body>
+
+
+
+</html>

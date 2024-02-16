@@ -1,0 +1,20 @@
+{% extends 'registration/home.html' %}
+{% load static %}
+
+{% block content %}
+<div >
+  <h2>Update Itinerary</h2>
+  <form method="post" id="update-display">
+    {% csrf_token %}
+    <label for="itinerary_name">Itinerary Name:</label>
+    <input type="text" id="itinerary_name" name="itinerary_name" value="{{ itinerary.itinerary_name }}">
+    <label for="businesses">Businesses:</label>
+    <select id="businesses" name="businesses" multiple>
+      {% for business in businesses %}
+        <option value="{{ business.id }}" {% if business in itinerary.business_list.all %}selected{% endif %}>{{ business.business_name }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Update</button>
+  </form>
+</div>
+{% endblock %}

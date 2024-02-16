@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} <title> WanderWhiz Sign Up </title> {% endblock %}
+{% block content %}
+	<!-- <form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Create User</button>
+	</form> -->
+	<div class="signup-container">
+		<div class="signup-box">
+		  <div class="lock-icon">
+			<img
+			src=" {% static 'images/lock-4529981_1280.png' %} "
+			  alt="Lock Icon"
+			  width="200"
+			  height="200"
+			/>
+		  </div>
+		  <h2>Sign Up</h2>
+		  <form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class="button-container">
+			  <button type="submit">Sign Up</button>
+			</div>
+		  </form>
+		</div>
+	  </div>
+{% endblock content %}

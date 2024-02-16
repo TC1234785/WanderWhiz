@@ -1,0 +1,18 @@
+{% extends 'registration/home.html'%}
+{% load static %}
+
+{% block itineraryinfo %}
+<ul>
+  {% for itinerary in itineraries %}
+  {% if itinerary.id and itinerary.user_id_id == request.user.id %}
+    <li>
+        <a href="{% url 'itinerary_detail' id=itinerary.id %}">{{ itinerary.itinerary_name }}</a>
+      {% endif %}
+      <!-- Display other relevant fields of the itinerary -->
+    </li>
+  {% empty %}
+    <li>No itineraries found.</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

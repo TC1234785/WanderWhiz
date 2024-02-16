@@ -1,0 +1,409 @@
+
+/* 
+.popup-content {
+	border-style: solid;
+	border-color: #111;
+	 width: 175px; 
+} */
+
+/* The popup bubble styling. */
+.popup-bubble {
+	/* Position the bubble centred-above its parent. */
+	position: absolute;
+	top: -20px;
+	left: 0;
+	transform: translate(-50%, -100%);
+	/* Style the bubble. */
+	border-style: solid;
+	border-color: #111;
+	background-color: #E7C176;
+	padding: 5px;
+	border-radius: 5px;
+	font-family: sans-serif;
+	overflow-y: auto;
+	max-height: 180px;
+	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* The parent of the bubble. A zero-height div at the top of the tip. */
+.popup-bubble-anchor {
+	/* Position the div a fixed distance above the tip. */
+	position: absolute;
+	width: 100%;
+	bottom: 8px;
+	left: 0;
+
+}
+
+/* This element draws the tip. */
+.popup-bubble-anchor::after {
+	content: "";
+	position: absolute;
+	top: -20px;
+	left: 0;
+	/* Center the tip horizontally. */
+	transform: translate(-50%, 0);
+	/* The tip is a https://css-tricks.com/snippets/css/css-triangle/ */
+	width: 0;
+	height: 0;
+	/* The tip is 8px high, and 12px wide. */
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 8px solid #E7C176;
+
+}
+
+/* JavaScript will position this div at the bottom of the popup tip. */
+.popup-container {
+	cursor: auto;
+	height: 0;
+	position: absolute;
+	/* The max width of the info window. */
+	width: 200px;
+}
+
+.itenarary_item {
+	margin-bottom: 15px;
+	margin-left: 15px;
+}
+
+.filterTextbox {
+	overflow: scroll;
+}
+
+.dropdown-buttons {
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+
+.display {
+	display: block;
+}
+
+/* .itinerary-fix{
+	height: 66.8vh;
+} */
+
+#map {
+	/* height: calc(100vh - 200); subtract the height of navigation bar and search bar from viewport height */
+	height: 100%;
+	width: 100%;
+	grid-row: 1;
+	border-radius: 10px;
+	border-color: #E7C176;
+	grid-column: 2;
+	grid-row: 2;
+}
+
+#search {
+	border-radius: 10px;
+	width: 100%;
+	/* height: 40px; */
+	padding: 8px 16px;
+}
+
+.map {
+	border-radius: 10px;
+	border-color: #E7C176;
+}
+
+.itinerary-fix{
+	height: 75vh;
+}
+
+body {
+	background-color: #f0e6d6;
+	width: 100vw;
+	height: 100vh;
+	height: auto;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0%;
+  }
+  li, li::marker {
+	list-style-type: none;
+  }
+
+.container {
+	margin-top: 5px;
+	margin-bottom: 100px;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	/* grid-row: 1 / -1; */
+	height: calc(100vh - 200px);
+	padding: 0px 25px;
+}
+
+
+.textbox {
+	border-radius: 10px;
+	margin-left: 20px;
+	height: 100%;
+	grid-column: 2;
+	grid-row: 1;
+	background-color: #E7C176;
+	overflow-y: auto;
+	padding-left:2%;
+	/* add a scrollbar if the content overflows */
+}
+
+
+.container-map {
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+	grid-template-rows: 1fr 8fr;
+	min-height: 0;
+}
+
+h2 {
+	padding-left: 10px;
+}
+
+.container-heading {
+	padding-top: 5px;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.heading-images {
+	padding: 3px;
+}
+
+.search-container {
+	margin: 3px;
+	display: flex;
+	align-items: center;
+	border: 2px solid #ccc;
+	border-radius: 20px;
+	padding: 7px;
+	grid-column: 1/-1;
+	grid-row: 1;
+}
+
+.search-container input[type="text"] {
+	border: none;
+	outline: none;
+	font-size: 16px;
+	padding: 5px;
+	flex: 1;
+}
+button{
+	font-size: large;
+}
+
+
+.search-container {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 1%;
+}
+
+#select-button {
+	background-color: #dfa735;
+	color: #fff;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-left: 8px;
+}
+
+#clear-button {
+	background-color: #dc3545;
+	color: #fff;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-left: 8px;
+}
+
+   
+  .dropdown-buttons button {
+	display: block;
+	width: 100%;
+	padding: 5px;
+	color: #fdfbfb;
+	border-radius: 4px;
+	background-color: #e3620c;
+	margin: 2%;
+	border: none;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-buttons button:hover {
+	background-color: #363333;
+  }
+  
+  .filterContainer:hover .dropdown-buttons {
+	display: block;
+  }
+  
+/* Header Styles */
+header {
+	background-color: #E7C176;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav {
+	height: 75px;
+  }
+  
+  nav ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+  }
+  
+  nav li {
+	float: right;
+  }
+  
+  nav li a {
+	display: block;
+	color: rgb(10, 8, 8);
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: bolder;
+  }
+  
+  nav li a:hover {
+	background-color: #e8ba5c;
+	border-radius: 10px;
+	transition: background-color 0.3s ease;
+  }
+  
+  /* Footer Styles */
+  #feet {
+	background-color: #E7C176;
+	color: #fff;
+	padding: 10px;
+	margin-bottom: 0%;
+  }
+  
+  .container-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 18px;
+  }
+  
+  .footer-links {
+	display: flex;
+  }
+  
+  .footer-links a {
+	display: block;
+	color: rgb(4, 2, 2);
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: larger;
+  }
+  
+  .footer-links a:hover {
+	background-color: #e8ba5c;
+	border-radius: 10px;
+	transition: background-color 0.3s ease;
+  }
+  
+  .footer-logo {
+	display: flex;
+	align-items: center;
+	margin-right: 2%;
+  }
+  
+  .footer-logo img {
+	margin-right: 0px;
+  }
+  
+  #weatherdiv {
+	display: flex;
+	flex-direction: row;
+  }
+
+  #weather-daily {
+	display: flex;
+	flex-direction: column; 
+	background-color: #f5f5f5;
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: bolder;
+	color: #333; 
+	width: 70%; 
+	align-items: center;
+	margin-bottom: 10px;
+	justify-content: center;
+  }
+
+  .weather-icon {
+	background-color: #888; /* Adjust the color as needed */
+	padding: 2px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+  }
+  
+#list {
+	text-align: left;
+}
+.update-itinerary {
+	margin-left: 10px;
+	background-color: blue; 
+	color: white; 
+	border: none; 
+	border-radius: 20px; 
+	padding: 10px 20px; 
+	text-align: center; 
+	text-decoration: none; 
+} 
+.delete-itinerary { 
+	margin: 10px; 
+	background-color: red; 
+	color: white; 
+	border: none; 
+	border-radius: 20px; 
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none; 
+} 
+#update-display { 
+	display: flex;
+	flex-direction: column;
+	padding: 5% 20% 5%;
+	height:auto
+}
+#businesses{
+	height: 50vh;
+}
+#save-button{
+	border: 1px solid;
+	margin: 10px; 
+	background-color: darkgreen; 
+	color: white; 
+	border: none; 
+	border-radius: 20px; 
+	padding: 10px 20px; 
+	text-align: center; 
+	text-decoration: none;
+}
+#currencydisplay{
+	margin-right: 1%;
+}

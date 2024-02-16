@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} <title>WanderWhiz Login</title>  {% endblock%}
+
+{% block content %}
+	{% if messages %}
+
+	{% endif %}
+
+	<div class="login-container">
+		<div class="login-box">
+		  <div class="lock-icon">
+			<img
+			  src=" {% static 'images/lock-4529981_1280.png' %} "
+			  alt="Lock Icon"
+			  width="200"
+			  height="200"
+			/>
+		  </div>
+		  <h2>Login</h2>
+		  <form method="post">
+			{% csrf_token %}
+			{{ form }}
+			<div class="button-container">
+			  <button type="submit">Login</button>
+			</div>
+		  </form>
+		</div>
+	  </div>
+	  <div class="messages">
+	    {% for message in messages %}
+	      <div style='text-align:center;'{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+	    {% endfor %}
+	  </div>
+{% endblock content %}

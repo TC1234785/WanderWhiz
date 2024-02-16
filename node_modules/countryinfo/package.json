@@ -1,0 +1,48 @@
+{
+  "name": "countryinfo",
+  "version": "1.0.5",
+  "description": "ISO-codes, currencies, languages... All you need to know about countries.",
+  "main": "./lib/countrysynonyms.js",
+  "scripts": {
+    "test": "mocha",
+    "cleaner": "node ./lib/data/cleaner.js"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "country-data": "^0.0.31",
+    "i18n-iso-countries": "^1.10.0",
+    "lodash": "~4.17.4",
+    "mocha": "^8.3.0",
+    "xlsx": "^0.8.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohitsdaniel/countrysynonyms.git"
+  },
+  "keywords": [
+    "country",
+    "ISO",
+    "3166",
+    "3166-2",
+    "3166-3",
+    "3166-1",
+    "currencies",
+    "languages",
+    "callingCodes",
+    "countryData",
+    "datasource",
+    "ioc",
+    "regions",
+    "countries",
+    "data"
+  ],
+  "author": "Daniel Peter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ohitsdaniel/countrysynonyms/issues"
+  },
+  "homepage": "https://github.com/ohitsdaniel/countrysynonyms#readme",
+  "engines": {
+    "node": ">=6.9.3"
+  }
+}

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <script src="scripts/script.js" defer></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <h3>Agile Itinerary</h3>
+    <div class="row">
+      <div class = "col">
+        <input class="form-control" id="search" type="text" placeholder="Search...">
+      </div>
+    </div>
+    <div class = "container">
+    <!--div for map -->
+    <div id="map"></div>
+    <div id = temp></div>
+    </div>
+    <!-- connect to api -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEE6-JSPCe6zNZuAoIPog0ELD2-UyO3CM&libraries=places&callback=initMap&libraries=places&v=weekly"
+    ></script>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'registration/home.html'%}
+{% load static %}
+
+{% block itineraryinfo %}
+
+<ul>
+  {% for itinerary in itineraries %}
+    <li>
+      <a href="{% url 'itinerary_detail' itinerary.itinerary_id %}">{{ itinerary.itinerary_id }}</a>
+      <!-- Display other relevant fields of the itinerary -->
+    </li>
+  {% empty %}
+    <li style = 'text-align:center;'>No itineraries found.</li>
+  {% endfor %}
+</ul>
+
+
+<h2>Create/Update Itinerary</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Save">
+</form>
+
+
+
+{% endblock %}
